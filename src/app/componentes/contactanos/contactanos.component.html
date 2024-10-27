@@ -1,21 +1,24 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <div class="justify-content-center" style="padding-top: 20px;">
-                <h5>Contactanos o vea más de nuestos servicios en nuestras redes sociales: </h5>
-                <a href="https://www.facebook.com/?locale=es_LA">
-                    <img src="assets/2021_Facebook_icon.svg.png" width="40" height="36">
-                </a>
-                <a href="https://www.instagram.com/">
-                    <img src="assets/Instagram_logo_2022.svg" width="40" height="36">
-                </a>
-                <a href="https://www.whatsapp.com/?lang=es_LA">
-                    <img src="assets/WhatsApp.svg.png" width="40" height="36">
-                </a>
+            <h1 class="pt-4 text-center">Contactanos para nuestros servicios</h1>
+            <div class="pt-4 text-center">
+                <h5 class="mb-3">Ve más de nuestros servicios en nuestras redes sociales</h5>
+                <div class="d-flex justify-content-center gap-3">
+                    <a href="https://www.facebook.com/?locale=es_LA" target="_blank" class="text-decoration-none">
+                        <img src="assets/2021_Facebook_icon.svg.png" width="40" height="36" alt="Facebook">
+                    </a>
+                    <a href="https://www.instagram.com/" target="_blank" class="text-decoration-none">
+                        <img src="assets/Instagram_logo_2022.svg" width="40" height="36" alt="Instagram">
+                    </a>
+                    <a href="https://www.whatsapp.com/?lang=es_LA" target="_blank" class="text-decoration-none">
+                        <img src="assets/WhatsApp.svg.png" width="40" height="36" alt="WhatsApp">
+                    </a>
+                </div>
             </div>
-            <div class="row justify-content-center" style="padding-top: 100px; padding-bottom: 50px;">
+            <div class="pt-4 pb-3 row justify-content-center">
                 <div class="col-md-6">
-                    <form>
+                    <form [formGroup]="formularioForm" (ngSubmit)="enviarDatos()">
                         <h1 class="text-center">Formulario de contacto</h1>
                         <div class="mb-3">
                             <label for="nombre" class="form-label">Nombre</label>
@@ -39,6 +42,14 @@
                         </div>
                         <button type="submit" class="btn btn-primary">Enviar</button>
                     </form>
+                </div>
+                <div class="card mt-4 pb-3" *ngIf="datos_formulario != null">
+                    <div class="card-body">
+                        <p class="card-text h4">
+                            Hola {{datos_formulario.nombre}} {{datos_formulario.apellido}},<br>
+                            Gracias por contactarnos. Nos comunicaremos con usted pronto a través de su correo electrónico <strong>{{datos_formulario.email}}</strong> o su número de teléfono <strong>{{datos_formulario.tlfo}}</strong>.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>

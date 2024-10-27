@@ -6,7 +6,7 @@
             <h1 class="text-center">Servicios Técnicos de Mercy Developer</h1>
 
             
-            <div class="row" style="padding-top: 100px;">
+            <div class="pt-5 row">
                 <div class="col-md-4">
                     <div class="card" style="width: 18rem;">
                         <img src="assets/98.webp" class="card-img-top" alt="...">
@@ -36,9 +36,9 @@
                 </div>
             </div>
 
-            <div class="row justify-content-center" style="padding-top: 100px; padding-bottom: 50px;">
+            <div class="pt-5 mb-3 row justify-content-center">
                 <div class="col-md-4">
-                    <form>
+                    <form [formGroup]="formularioForm" (ngSubmit)="enviarDatos()">
                         <div class="mb-3">
                             <label for="nombre" class="form-label">Nombre</label>
                             <input type="text" id="nombre" class="form-control" formControlName="nombre">
@@ -53,6 +53,15 @@
                         </div>
                         <button type="submit" class="btn btn-primary">Enviar</button>
                     </form>
+                </div>
+                <div class="card mt-4 pb-3" *ngIf="datos_formulario != null">
+                    <div class="card-body">
+                        <p class="card-text h4">
+                            Hola {{datos_formulario.nombre}} {{datos_formulario.apellido}},<br>
+                            Su mensaje fue enviado con exito.<br>
+                            "{{datos_formulario.mensaje}}"
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
